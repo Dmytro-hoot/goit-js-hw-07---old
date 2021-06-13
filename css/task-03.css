@@ -1,0 +1,9 @@
+.gallery-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.gallery-list__item img {
+  width: 600px;
+}
