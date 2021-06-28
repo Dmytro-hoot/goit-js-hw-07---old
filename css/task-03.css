@@ -1,5 +1,6 @@
 .gallery-list {
   display: flex;
+  align-items: center;
   flex-direction: column;
   list-style: none;
 }

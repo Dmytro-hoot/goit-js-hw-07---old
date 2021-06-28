@@ -1,35 +1,27 @@
 const images = [
-  {
-    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'White and Black Long Fur Cat',
-  },
-  {
-    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
-  },
-  {
-    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    alt: 'Group of Horses Running',
-  },
+	{
+		url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		alt: 'White and Black Long Fur Cat',
+	},
+	{
+		url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+	},
+	{
+		url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		alt: 'Group of Horses Running',
+	},
 ];
 
 const galleryEl = document.querySelector('#gallery');
-galleryEl.classList.add('gallery-list');
+const elementOfGallery = document.createElement('li');
 
-console.log(galleryEl);
-
-function createImages(arr) {
-	let imagesLi = arr.map(item => {
-		const imageItem = document.createElement('li');
-		imageItem.insertAdjacentHTML(
-			'beforeend',
-			`<img src="${item.url}" alt="${item.alt}">`,
-		);
-		imageItem.classList.add('gallery-list__item');
-		return imageItem;
-	});
-	return galleryEl.append(...imagesLi);
-
+const makeListOfImagesMarkup = ({ url, alt }) => {
+	return `<li class = gallery-list__item><img src='${url}' alt = '${alt}'></li>`;
 };
 
-createImages(images);
+const makeListOfImages = images
+	.map(makeListOfImagesMarkup).join('');
+
+
+galleryEl.insertAdjacentHTML("afterbegin", makeListOfImages);
